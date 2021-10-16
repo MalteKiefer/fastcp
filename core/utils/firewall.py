@@ -1,5 +1,32 @@
+import subprocess
 import pyufw as ufw
+from core.utils.system import run_cmd
 
+def check_ufw():
+    """Check UFW.
+
+    Checks if the Ubuntu package UFW is installed
+
+    """
+    try:
+        ufw = subprocess.call(["which", "ufw"])
+        if ufw != 0:
+            install_firewall()
+        return True
+    except:
+        pass
+
+def install_firewall():
+    """Install UFW Firewall.
+
+    Installs the ubuntu ufw package
+
+    """
+    try:
+        run_cmd(f'apt-get install -y ufw')
+        return True
+    except:
+        pass
 
 def enable_firewall():
     """Enable Firewall.
@@ -8,6 +35,7 @@ def enable_firewall():
 
     """
     try:
+        check_ufw()
         ufw.enable()
         return True
     except:
@@ -48,6 +76,7 @@ def set_default_rules():
 
     """
     try:
+        check_ufw()
         ufw.add("allow 22")
         ufw.add("allow 80")
         ufw.add("allow 443")
@@ -65,6 +94,7 @@ def add_rule(rule):
 
     """
     try:
+        check_ufw()
         ufw.add(rule)
         return True
     except:
