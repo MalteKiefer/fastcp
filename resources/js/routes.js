@@ -94,5 +94,13 @@ export const routes = [
         meta: {
             title: 'Server Info'
         }
+    },
+    {
+        path: '/server/firewall',
+        name: 'firewall',
+        component: require('./components/server/FirewallComponent').default,
+        meta: {
+            title: 'Firewall'
+        }
     }
 ];
