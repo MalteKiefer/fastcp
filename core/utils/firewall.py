@@ -2,6 +2,7 @@ import subprocess
 import pyufw as ufw
 from core.utils.system import run_cmd
 
+
 def check_ufw():
     """Check UFW.
 
@@ -15,6 +16,8 @@ def check_ufw():
         return True
     except:
         pass
+    return False
+
 
 def install_firewall():
     """Install UFW Firewall.
@@ -27,6 +30,22 @@ def install_firewall():
         return True
     except:
         pass
+    return False
+
+
+def status_firewall():
+    """Status UFW Firewall.
+
+    This function give back a dict with the firewall status and all rules.
+
+    """
+    try:
+        check_ufw()
+        return ufw.status()
+    except:
+        pass
+    return False
+
 
 def enable_firewall():
     """Enable Firewall.
@@ -40,6 +59,7 @@ def enable_firewall():
         return True
     except:
         pass
+    return False
 
 
 def disable_firewall():
@@ -53,6 +73,7 @@ def disable_firewall():
         return True
     except:
         pass
+    return False
 
 
 def reset_firewall():
@@ -67,6 +88,7 @@ def reset_firewall():
         return True
     except:
         pass
+    return False
 
 
 def set_default_rules():
@@ -101,6 +123,7 @@ def add_rule(rule):
         pass
     return False
 
+
 def delete_rule(rule):
     """Delete rule from firewall.
 
@@ -113,6 +136,7 @@ def delete_rule(rule):
     except:
         pass
     return False
+
 
 def delete_all():
     """Delete rule from firewall.
