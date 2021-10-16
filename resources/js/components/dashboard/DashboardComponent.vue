@@ -178,7 +178,7 @@ export default {
             let _this = this;
             _this.$store.commit('setBusy', true);
             axios
-                .get('/stats/common/')
+                .get('/server/common/')
                 .then((res) => {
                     _this.$store.commit('setBusy', false);
                     _this.resources = res.data;

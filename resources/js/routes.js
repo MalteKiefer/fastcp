@@ -88,11 +88,11 @@ export const routes = [
         }
     },
     {
-        path: '/harware-info',
-        name: 'hardware',
-        component: require('./components/generic/HardwareComponent').default,
+        path: '/server',
+        name: 'server',
+        component: require('./components/server/ServerComponent').default,
         meta: {
-            title: 'Hardware Info'
+            title: 'Server Info'
         }
     }
 ];

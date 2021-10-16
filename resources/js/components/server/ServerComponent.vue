@@ -53,7 +53,7 @@ export default {
         getHardwareInfo() {
             let _this = this;
             _this.$store.commit('setBusy', true);
-            axios.get('/stats/hardware/').then((res) => {
+            axios.get('/server/hardware/').then((res) => {
                 _this.$store.commit('setBusy', false);
                 _this.info = res.data;
             }).catch((err) => {
