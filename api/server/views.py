@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from core.utils.serverinfo import system_stats, hardware_info
+from core.utils.firewall import status_firewall
 from rest_framework import status
 
 
@@ -27,5 +28,19 @@ class HardwareinfoView(APIView):
     permission_classes = [permissions.IsAdminUser]
     def get(self, request, *args, **kw):
         result = hardware_info()
+        response = Response(result, status=status.HTTP_200_OK)
+        return response
+
+
+class FirewallView(APIView):
+    """Firewall View
+
+    Returns the information about the firewall. Only admins are allowed to get these details.
+    """
+    http_method_names = ['get']
+    permission_classes = [permissions.IsAdminUser]
+
+    def get(self, request, *args, **kw):
+        result = status_firewall()
         response = Response(result, status=status.HTTP_200_OK)
         return response
