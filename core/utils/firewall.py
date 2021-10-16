@@ -99,9 +99,9 @@ def set_default_rules():
     """
     try:
         check_ufw()
-        ufw.add("allow 22")
-        ufw.add("allow 80")
-        ufw.add("allow 443")
+        ufw.add("allow 22/tcp")
+        ufw.add("allow 80/tcp")
+        ufw.add("allow 443/tcp")
         ufw.add("allow 2050")
         return True
     except:
