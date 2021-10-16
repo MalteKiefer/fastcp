@@ -58,14 +58,21 @@
     <li class="nav-item">
         <router-link class="nav-link collapsed" :to="{name: 'hardware'}">
             <i class="fas fa-server"></i>
-            <span>Server</span>
+            <span>Info</span>
         </router-link>
     </li>
-        <li class="nav-item">
-        <router-link class="nav-link collapsed" :to="{name: 'firewall'}">
-            <i class="fas fa-dungeon"></i>
-            <span>Firewall</span>
-        </router-link>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSecurity"
+            aria-expanded="true" aria-controls="collapseSecurity">
+            <i class="fas fa-fw fa-shield-alt"></i>
+            <span>Security</span>
+        </a>
+        <div id="collapseSecurity" class="collapse" aria-labelledby="headingSecurity" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Server:</h6>
+                <router-link class="collapse-item" :to="{name: 'firewall'}"><i class="fas fa-dungeon"></i> Firewall</router-link>
+            </div>
+        </div>
     </li>
     {% endif %}
 </ul>
