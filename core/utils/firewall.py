@@ -102,7 +102,7 @@ def set_default_rules():
         ufw.add("allow 22/tcp")
         ufw.add("allow 80/tcp")
         ufw.add("allow 443/tcp")
-        ufw.add("allow 2050")
+        ufw.add("allow 2050/tcp")
         return True
     except:
         pass
